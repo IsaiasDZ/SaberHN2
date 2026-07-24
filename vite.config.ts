@@ -12,4 +12,11 @@ export default defineConfig({
     // nitro/vite builds from this
     server: { entry: "server" },
   },
+  // Sobrescribimos el preset de Cloudflare para servirse como servidor ejecutable tradicional
+  vite: {
+    nitro: {
+      preset: "node-server", // O 'bun' si vas a correr estrictamente con Bun
+      serveStatic: true,     // 👈 Sirve /public (CSS, imágenes, JS del cliente) en Railway
+    },
+  },
 });
